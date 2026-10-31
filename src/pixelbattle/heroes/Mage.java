@@ -19,6 +19,20 @@ public class Mage extends Hero {
         //   «Вогняна куля» (Target.ENEMY, перезарядка 1) — 22..30 шкоди;
         //   «Зцілення»     (Target.ALLY,  перезарядка 2) — лікує ціль на 25.
 
+        // Вміння «Вогняна куля» - завдає 22–30 шкоди ворогу
+        addSkill(new Skill("Вогняна куля", Target.ENEMY, 1, (user, target) -> {
+            int dmg = target.takeDamage(random(22, 30));
+            return user.getName() + " запускає вогняну кулю в " +
+                    target.getName() + ": " + dmg + " шкоди";
+        }));
+
+        // Вміння «Зцілення» - відновлює союзнику 25 HP
+        addSkill(new Skill("Зцілення", Target.ALLY, 2, (user, target) -> {
+            int healed = target.heal(25);
+            return user.getName() + " зцілює " +
+                    target.getName() + " на " + healed + " HP";
+        }));
+
         // TODO 8: ультимейт «Метеорит» — окремий клас Meteor
         //   у файлі pixelbattle/ultimates/Meteor.java.
         //   Тут лише підключіть його: setUltimate(new Meteor());

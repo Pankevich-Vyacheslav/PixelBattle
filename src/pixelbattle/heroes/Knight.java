@@ -20,6 +20,12 @@ public class Knight extends Hero {
         // TODO 1: вміння «Щит» (Target.SELF, перезарядка 2):
         //   лицар стає в захист — user.setGuarding(true).
 
+        // Вміння "Щит"
+        addSkill(new Skill("Назва", Target.SELF, 2, (user, target) -> {
+            user.setGuarding(true);
+            return user.getName() + " використовує щит і стає в захист!";
+        }));
+
         // TODO 7: ультимейт «Небесний молот» — АНОНІМНИЙ КЛАС, що реалізує Ultimate:
         //   кожному ЖИВОМУ ворогу 15 шкоди та оглушення на 1 хід.
         //   (не забудьте import pixelbattle.core.Ultimate; та import pixelbattle.core.Fighter;)
