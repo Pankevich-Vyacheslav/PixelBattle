@@ -35,4 +35,13 @@ public class Archer extends Hero {
 
     // TODO 5: пасивка «Ухилення» — перевизначте modifyIncomingDamage:
     //   з імовірністю 25% (chance(25)) шкода дорівнює 0, інакше — без змін.
+
+    // Пасивна здібність «Ухилення»
+    @Override
+    protected int modifyIncomingDamage(int damage) {
+        if (chance(25)) {
+            return 0;
+        }
+        return damage;
+    }
 }
